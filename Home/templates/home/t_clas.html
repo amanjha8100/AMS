@@ -1,0 +1,36 @@
+{% extends 'home/base.html' %}
+{% block content %}
+    <h5 style="padding-left:25px;">List of Classes</h5>
+    <div class="card mb-3">
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered text-center" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                        <th>Class</th>
+                        <!--<th>Course</th>-->
+                        <!--<th></th>-->
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for sub in sub %}
+                    <tr>
+                        <td>{{ sub.sub }}</td>
+                        <!--<td>{{ ass.course }}</td>-->
+                       <!--<td>
+                            
+                          <a class="btn btn-primary" href="" role="button">Enter Attendance</a>
+                          <a class="btn btn-warning" href="#">Extra Class</a>
+                          <a class="btn btn-danger" href="#">View Students</a>
+
+                        </td>-->
+                    </tr>
+                    {% empty %}
+                            <p>teacher has no courses</p>
+                    {% endfor %}
+
+                  </tbody>
+                </table>
+              </div>
+    </div>
+{% endblock %}

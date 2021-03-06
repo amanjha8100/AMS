@@ -1,0 +1,47 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="card mb-3">
+        <div class="card-header">
+              <i class="fas fa-table"></i>
+            <b>Attendance</b></div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                  <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Status</th>
+                        <th></th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    {% for ob in status %}
+                    <tr>
+                        <td>{{ ob.date }}</td>
+                        {% if ob.status == 0 %}
+                            <td class="p-3 mb-2 bg-danger text-white">Not Marked</td>
+                            <td>
+                                
+                                <!--<a class="btn btn-warning" href="#">Cancel Class</>-->
+                            </td>
+
+                        {% elif ob.status == 1 %}
+                            <td class="p-3 mb-2 bg-success text-white"></td>
+                            <td><a class="btn btn-primary" href="#" role="button">Enter Attendance</a></td>
+                            
+                            <!--<td><a class="btn btn-secondary" href="#" role="button">Edit Attendance</a> </td>-->
+                        <!--<td>{{status.status}}</td>-->
+                        {% endif %}
+                    </tr>
+                    {% empty %}
+                            <p>student has no classes</p>
+                    {% endfor %}
+
+                  </tbody>
+                </table>
+              </div>
+        </div>
+    </div>
+{% endblock %}

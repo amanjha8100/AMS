@@ -1,0 +1,40 @@
+{% extends 'home/base.html' %}
+{% load static %}
+
+
+{% block css %}
+ <link rel="stylesheet" href="{% static 'css/styleindex.css'%}">
+{% endblock %}
+{% block content %}
+<!--<h3>Students IT-23</h3>
+    <ul>
+        {% for student in students %}
+            <li>Student Name: {{student.name}} , Roll. No.: {{student.roll}}</li>
+        {% endfor %}
+    </ul>-->
+    <table class="index">
+        <!--<caption>Statement Summary</caption>-->
+        <thead>
+          <tr>
+            <th scope="col">Student name</th>
+            <th scope="col">Roll no.</th>
+            <!--<th scope="col">Amount</th>
+            <th scope="col">Period</th>-->
+          </tr>
+        </thead>
+        <tbody>
+            {% for student in students %}
+          <tr>
+            <td data-label="Student name">{{student.name}}</td>
+            <td data-label="Roll no.">{{student.roll}}</td>
+            <!--<td data-label="Amount">$1,190</td>
+            <td data-label="Period">03/01/2016 - 03/31/2016</td>-->
+          </tr>
+          {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+
+{% block scripts %}
+     
+{% endblock %}
