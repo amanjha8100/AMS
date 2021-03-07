@@ -11,7 +11,7 @@ print(dateg)
 @login_required
 def index(request):
     return render(request, 'home/index.html',{
-        "students":student.objects.all()
+        "students":student.objects.order_by('roll')
     })
 
 @login_required
@@ -42,7 +42,7 @@ def class_date(request):
 
 @login_required
 def sub(request):
-    sub=subject.objects.all()
+    sub=subject.objects.order_by('sub')
     return render(request, 'home/t_clas.html',{
         "sub":sub
     })
