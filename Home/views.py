@@ -87,7 +87,6 @@ def export(request):
     today_filter = attendance.objects.filter(date__year=today.year,date__month=today.month,date__day=today.day)
     for attend in today_filter.values_list('name','roll','date','sub','time'):
         writer.writerow(attend)
-    k = "attendance"
-    response['Content-Disposition']='attachment; filename=k'
+    response['Content-Disposition']='attachment; filename="attendance.csv"'
     return response
     #writer.writerow(['name','roll','date','sub','time'])
