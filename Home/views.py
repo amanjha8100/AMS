@@ -1,9 +1,11 @@
 from django.shortcuts import render,redirect
-from .models import student,attendanceclass,subject,time
+from .models import student,attendanceclass,subject,time,attendance
 from django.contrib.auth.decorators import login_required
 from django.utils import timezone
 import datetime
 from .forms import AttendanceForm
+from django.http import HttpResponse
+import csv
 # Create your views here.
 dateg = datetime.date.today() - datetime.timedelta(days=1)
 print("dekh")
@@ -75,3 +77,17 @@ def load_sub(request):
     return render(request, "home/sub_dropdown.html",{
         "times":times
     })
+
+@login_required
+def export(request):
+    response = HttpResponse(content_type='text/csv')
+    writer = csv.writer(response)
+    writer.writerow(['Name','Roll Number','Date','Subject','WeekDay'])
+    today = datetime.date.today()
+    today_filter = attendance.objects.filter(date__year=today.year,date__month=today.month,date__day=today.day)
+    for attend in today_filter.values_list('name','roll','date','sub','time'):
+        writer.writerow(attend)
+    k = "attendance"
+    response['Content-Disposition']='attachment; filename=k'
+    return response
+    #writer.writerow(['name','roll','date','sub','time'])

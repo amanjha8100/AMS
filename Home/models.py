@@ -7,7 +7,7 @@ from django.core.exceptions import ValidationError
 #Date Validator
 def date_valid(value):
     today=datetime.date.today()
-    if value is not today:
+    if value.year is not today.year and value.month is not today.month and value.day is not today.day:
         raise ValidationError("Attendance can only be for today's date!")
 
 class student(models.Model):

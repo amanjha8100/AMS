@@ -9,4 +9,5 @@ urlpatterns = [
     path("subject/",views.sub,name="subject"),
     path("subject/attendance/",views.a_form,name="attend"),
     path("subject/attendance/ajax-load-sub/",views.load_sub,name="ajax_load_sub"),
+    path('subject/attendance/download',views.export,name="download"),
 ]
