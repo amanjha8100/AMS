@@ -35,6 +35,10 @@
                             <li class="nav-item"><a class="nav-link active" href="{% url 'subject' %}">Subjects</a></li>
                             <li class="nav-item"><a class="nav-link active" href="{% url 'attend' %}">Attendance</a></li>
                             <!--<li class="nav-item"><a class="nav-link active" href="#">Admin</a></li>-->
+                            {% csrf_token %}
+                            {% if user.is_superuser %}
+                            <li class="nav-item"><a class="nav-link active" href="{% url 'download' %}">Download</a></li>
+                            {% endif %}
                             <li class="nav-item"><a class="nav-link active" href="{% url 'logout' %}">Logout</a></li>
                             <!--<li class="nav-item"><a class="nav-link active" href="#">HOD</a></li>-->
                             <!--<li class="nav-item"><a class="nav-link active" href="#">Teacher</a></li>-->
