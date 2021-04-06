@@ -8,7 +8,7 @@
 
         {% load static %}
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-        <script src="http://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
@@ -22,7 +22,7 @@
             <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
                 <div class="container-fluid">
                     <a class="navbar-brand" href="#">
-                        <h2 class="text-white"><small>AMS</small></h2>
+                        <h2 class="text-white"><small><a href="{% url 'index' %}" style="color:#FFF; text-decoration: none;">AMS</a></small></h2>
                     </a>
 
                     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent">
@@ -33,13 +33,22 @@
                         <ul class="navbar-nav">
                             <li class="nav-item"><a class="nav-link active" href="{% url 'index' %}">Home</a></li>
                             <li class="nav-item"><a class="nav-link active" href="{% url 'subject' %}">Subjects</a></li>
+                            {% if user.is_authenticated %}
                             <li class="nav-item"><a class="nav-link active" href="{% url 'attend' %}">Attendance</a></li>
+                            {% else %}
+                            <li class="nav-item"><a class="nav-link active" href="{% url 'login' %}">Attendance</a></li>
+                            {% endif %}
                             <!--<li class="nav-item"><a class="nav-link active" href="#">Admin</a></li>-->
                             {% csrf_token %}
                             {% if user.is_superuser %}
                             <li class="nav-item"><a class="nav-link active" href="{% url 'download' %}">Download</a></li>
                             {% endif %}
+                            {% if user.is_authenticated %}
                             <li class="nav-item"><a class="nav-link active" href="{% url 'logout' %}">Logout</a></li>
+                            {% endif %}
+                            {% if user.is_authenticated is False %}
+                            <li class="nav-item"><a class="nav-link active" href="{% url 'login' %}">Login</a></li>
+                            {% endif %}
                             <!--<li class="nav-item"><a class="nav-link active" href="#">HOD</a></li>-->
                             <!--<li class="nav-item"><a class="nav-link active" href="#">Teacher</a></li>-->
                             <!--<li class="nav-item"><a class="nav-link active" href="#">Student</a></li>

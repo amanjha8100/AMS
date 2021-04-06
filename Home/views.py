@@ -10,7 +10,6 @@ import csv
 dateg = datetime.date.today() - datetime.timedelta(days=1)
 print("dekh")
 print(dateg)
-@login_required
 def index(request):
     return render(request, 'home/index.html',{
         "students":student.objects.order_by('roll')
