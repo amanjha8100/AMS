@@ -41,7 +41,7 @@ def class_date(request):
         "status":ob
     })
 
-@login_required
+
 def sub(request):
     sub=subject.objects.order_by('sub')
     return render(request, 'home/t_clas.html',{
