@@ -114,12 +114,10 @@ def attendancefilter(request):
     nameq = request.GET.get('name')
     rollq = request.GET.get('roll')
     dateq = request.GET.get('date')
-    if nameq == '' or nameq is None and rollq == '' or rollq is None and dateq == '' or dateq is None:
-        qs=[]
     if nameq != '' and nameq is not None:
-        qs=qs.filter(name=nameq)
+        qs=qs.filter(name__icontains=nameq)
     if rollq != '' and rollq is not None:
-        qs=qs.filter(roll__icontains=rollq)
+        qs=qs.filter(roll=rollq)
     # if subjectq != '' and subjectq is not None:
     #     qs=qs.filter(sub__icontains=subjectq)
     if dateq != '' and dateq is not None:
