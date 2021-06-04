@@ -25,6 +25,9 @@ class student(models.Model):
     def __str__(self):
         return f"{self.name} and {self.roll}"
 
+    class Meta:
+        ordering = ['roll']
+
 
 class subject(models.Model):
     sub = models.CharField(max_length=64)
@@ -43,11 +46,14 @@ class attendance(models.Model):
     roll = models.IntegerField(blank=False)
     date = models.DateField(auto_now_add=False,auto_now=False,blank=False,validators=[date_valid])
     sub = models.ForeignKey(subject,on_delete=models.SET_NULL,blank=True,null=True)
-    time = models.ForeignKey(time,on_delete=models.SET_NULL,blank=True,null=True)
+    # time = models.ForeignKey(time,on_delete=models.SET_NULL,blank=True,null=True)
     """ def save(self, *args, **kwargs):
         if self.date is not datetime.date.today():
             raise ValidationError("The date has to be today!")
         super(Event, self).save(*args, **kwargs) """
+
+    class Meta:
+        ordering = ["-date"]
 
 
 class attendanceclass(models.Model):

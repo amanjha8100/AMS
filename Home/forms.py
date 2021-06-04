@@ -6,14 +6,14 @@ from django.core.exceptions import ValidationError
 class AttendanceForm(forms.ModelForm):
     class Meta:
         model = attendance
-        fields = ("name","roll","date","sub","time")
+        fields = ("name","roll","date","sub")
 
         widgets = {
             'name':forms.TextInput(attrs={'class':'form-control','placeholder':'Name'}),
             'roll':forms.NumberInput(attrs={'class':'form-control','placeholder':'Roll Number'}),
             #'date':forms.DateInput(attrs={'class':'form-control form-label'}),
             'sub':forms.Select(attrs={'class':'form-control','placeholder':'Subject'}),
-            'time':forms.Select(attrs={'class':'form-control','placeholder':'Day'}),
+            # 'time':forms.Select(attrs={'class':'form-control','placeholder':'Day'}),
             'date':DateInput,
         }
 
@@ -30,14 +30,14 @@ class AttendanceForm(forms.ModelForm):
         self.fields['roll'].label=""
         self.fields['date'].label=""
         self.fields['sub'].label=""
-        self.fields['time'].label=""
-        self.fields['time'].queryset = time.objects.none()
+        # self.fields['time'].label=""
+        # self.fields['time'].queryset = time.objects.none()
         
-        if 'sub' in self.data:
-            try:
-                sub_id = int(self.data.get('sub'))
-                self.fields['time'].queryset = time.objects.filter(sub_id=sub_id).order_by('time')
-            except (ValueError, TypeError):
-                pass  # invalid input from the client; ignore and fallback to empty City queryset
+        # if 'sub' in self.data:
+        #     try:
+        #         sub_id = int(self.data.get('sub'))
+        #         self.fields['time'].queryset = time.objects.filter(sub_id=sub_id).order_by('time')
+        #     except (ValueError, TypeError):
+        #         pass  # invalid input from the client; ignore and fallback to empty City queryset
         #elif self.instance.pk:
             #self.fields['time'].queryset = self.instance.country.city_set.order_by('time')

@@ -6,10 +6,13 @@ import datetime
 from .forms import AttendanceForm
 from django.http import HttpResponse
 import csv
+from django.contrib import messages
 # Create your views here.
 dateg = datetime.date.today() - datetime.timedelta(days=1)
 print("dekh")
 print(dateg)
+
+@login_required
 def index(request):
     return render(request, 'home/index.html',{
         "students":student.objects.order_by('roll')
@@ -55,8 +58,24 @@ def a_form(request):
         form=AttendanceForm(request.POST)
         if form.is_valid():
             data=form.cleaned_data
-            form.save()
-            #messages.success(request,"Your Attendance is recorded.")
+            date = form.cleaned_data['date']
+            sub = form.cleaned_data['sub']
+            if sub is None:
+                messages.success(request,"Enter subject")
+                return redirect('attend')
+            
+            roll = form.cleaned_data['roll']
+            try:
+                x=attendance.objects.get(date=date,sub=sub, roll=roll)
+            except attendance.DoesNotExist:
+                x=None
+            print(x)
+            if x is None:
+                form.save()
+            else:
+                messages.success(request,"Your Already submitted your attendance.")
+                return redirect('attend')
+            messages.success(request,"Your Attendance is recorded.Go to filter section to check previous or current attendance record")
             return redirect('attend')
     return render(request,"home/attendance_form.html",{'form':form})
 
@@ -96,6 +115,8 @@ def attendancefilter(request):
     nameq = request.GET.get('name')
     rollq = request.GET.get('roll')
     dateq = request.GET.get('date')
+    if nameq != '' and nameq is not None and rollq != '' and rollq is not None and dateq != '' and dateq is not None:
+        qs=[]
     if nameq != '' and nameq is not None:
         qs=qs.filter(name=nameq)
     if rollq != '' and rollq is not None:

@@ -15,8 +15,14 @@
             {{ form| crispy }}
             <input class="btn btn-success bg-dark" type="submit" value="Submit">
         </form>
+        {% for m in messages %}
+        <div class="text-info">
+            {{m}}
+        </div>
+        {% endfor %}
       </div>
     </div>
+    
   </div>
   <br>
   <br>
