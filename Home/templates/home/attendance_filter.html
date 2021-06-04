@@ -57,7 +57,7 @@
     </form>
 </main>
 
-<table class="index">
+<table class="index my-3">
     <!--<caption>Statement Summary</caption>-->
     <thead>
       <tr>
@@ -79,6 +79,10 @@
         <!--<td data-label="Amount">$1,190</td>
         <td data-label="Period">03/01/2016 - 03/31/2016</td>-->
       </tr>
+      {% empty %}
+      <div class="text-center">
+        Enter filters, with your data to see your attendance.
+      </div>
       {% endfor %}
     </tbody>
 </table>

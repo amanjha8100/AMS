@@ -12,7 +12,6 @@ dateg = datetime.date.today() - datetime.timedelta(days=1)
 print("dekh")
 print(dateg)
 
-@login_required
 def index(request):
     return render(request, 'home/index.html',{
         "students":student.objects.order_by('roll')
@@ -115,7 +114,7 @@ def attendancefilter(request):
     nameq = request.GET.get('name')
     rollq = request.GET.get('roll')
     dateq = request.GET.get('date')
-    if nameq != '' and nameq is not None and rollq != '' and rollq is not None and dateq != '' and dateq is not None:
+    if nameq == '' or nameq is None and rollq == '' or rollq is None and dateq == '' or dateq is None:
         qs=[]
     if nameq != '' and nameq is not None:
         qs=qs.filter(name=nameq)
