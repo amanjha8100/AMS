@@ -89,3 +89,25 @@ def export(request):
     response['Content-Disposition']='attachment; filename="attendance.csv"'
     return response
     #writer.writerow(['name','roll','date','sub','time'])
+
+@login_required
+def attendancefilter(request):
+    qs=attendance.objects.all()
+    nameq = request.GET.get('name')
+    rollq = request.GET.get('roll')
+    dateq = request.GET.get('date')
+    if nameq != '' and nameq is not None:
+        qs=qs.filter(name=nameq)
+    if rollq != '' and rollq is not None:
+        qs=qs.filter(roll__icontains=rollq)
+    # if subjectq != '' and subjectq is not None:
+    #     qs=qs.filter(sub__icontains=subjectq)
+    if dateq != '' and dateq is not None:
+        qs=qs.filter(date=dateq)
+    context = {
+        'qs':qs,
+        'nameq':nameq,
+        'rollq':rollq,
+        'dateq':dateq,
+    }
+    return render(request, 'home/attendance_filter.html',context)
