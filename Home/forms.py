@@ -10,7 +10,7 @@ class AttendanceForm(forms.ModelForm):
 
         widgets = {
             'name':forms.TextInput(attrs={'class':'form-control','placeholder':'Name'}),
-            'roll':forms.NumberInput(attrs={'class':'form-control','placeholder':'Roll Number'}),
+            'roll':forms.NumberInput(attrs={'class':'form-control','placeholder':'Roll Number(60--)'}),
             #'date':forms.DateInput(attrs={'class':'form-control form-label'}),
             'sub':forms.Select(attrs={'class':'form-control','placeholder':'Subject'}),
             # 'time':forms.Select(attrs={'class':'form-control','placeholder':'Day'}),
