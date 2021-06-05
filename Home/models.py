@@ -53,7 +53,7 @@ class attendance(models.Model):
         super(Event, self).save(*args, **kwargs) """
 
     class Meta:
-        ordering = ["-date"]
+        ordering = ["-date","roll"]
 
 
 class attendanceclass(models.Model):
