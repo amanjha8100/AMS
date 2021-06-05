@@ -99,10 +99,10 @@ def load_sub(request):
 def export(request):
     response = HttpResponse(content_type='text/csv')
     writer = csv.writer(response)
-    writer.writerow(['Name','Roll Number','Date','Subject','WeekDay'])
+    writer.writerow(['Name','Roll Number','Date','Subject'])
     today = datetime.date.today()
     today_filter = attendance.objects.filter(date__year=today.year,date__month=today.month,date__day=today.day)
-    for attend in today_filter.values_list('name','roll','date','sub','time'):
+    for attend in today_filter.values_list('name','roll','date','sub'):
         writer.writerow(attend)
     response['Content-Disposition']='attachment; filename="attendance.csv"'
     return response
