@@ -41,6 +41,11 @@
                             <!--<li class="nav-item"><a class="nav-link active" href="#">Admin</a></li>-->
                             {% csrf_token %}
                             {% if user.is_superuser %}
+                            {% if allow %}
+                            <li class="nav-item"><a class="nav-link active" href="{% url 'allow' %}"><i class="fa fa-stop"></i></a></li>
+                            {% else %}
+                            <li class="nav-item"><a class="nav-link active" href="{% url 'allow' %}"><i class="fa fa-play"></i></a></li>
+                            {% endif %}
                             <li class="nav-item"><a class="nav-link active" href="{% url 'download' %}">Download</a></li>
                             {% endif %}
                             {% if user.is_authenticated %}

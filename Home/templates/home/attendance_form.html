@@ -5,6 +5,7 @@
 {% block content %}
 <br>
 <br>
+{% if allow %}
 <div class="container">
     <div class="row justify-content-center">
       <div class="col-8">
@@ -23,7 +24,14 @@
       </div>
     </div>
     
-  </div>
+</div>
+{% else %}
+<div class="container">
+    <div class="text-center text-dark">
+        The attendance time is over, if you think this is a mistake contact admin.
+    </div>
+</div>
+{% endif %}
   <br>
   <br>
 {% endblock %}

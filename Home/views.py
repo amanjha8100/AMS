@@ -12,9 +12,13 @@ dateg = datetime.date.today() - datetime.timedelta(days=1)
 print("dekh")
 print(dateg)
 
+attend = False
+
 def index(request):
+    global attend
     return render(request, 'home/index.html',{
-        "students":student.objects.order_by('roll')
+        "students":student.objects.order_by('roll'),
+        "allow":attend,
     })
 
 @login_required
@@ -45,13 +49,15 @@ def class_date(request):
 
 
 def sub(request):
+    global attend
     sub=subject.objects.order_by('sub')
     return render(request, 'home/t_clas.html',{
-        "sub":sub
+        "sub":sub,"allow":attend
     })
 
 @login_required
 def a_form(request):
+    global attend
     form = AttendanceForm()
     if request.method == "POST":
         form=AttendanceForm(request.POST)
@@ -76,7 +82,7 @@ def a_form(request):
                 return redirect('attend')
             messages.success(request,"Your Attendance is recorded.Go to filter section to check previous or current attendance record")
             return redirect('attend')
-    return render(request,"home/attendance_form.html",{'form':form})
+    return render(request,"home/attendance_form.html",{'form':form,"allow":attend})
 
 @login_required
 def attend(request):
@@ -111,6 +117,7 @@ def export(request):
 @login_required
 def attendancefilter(request):
     qs=attendance.objects.all()
+    global attend
     nameq = request.GET.get('name')
     rollq = request.GET.get('roll')
     dateq = request.GET.get('date')
@@ -127,5 +134,19 @@ def attendancefilter(request):
         'nameq':nameq,
         'rollq':rollq,
         'dateq':dateq,
+        "allow":attend,
     }
     return render(request, 'home/attendance_filter.html',context)
+
+
+
+@login_required
+def allowattend(request):
+    global attend
+    if attend:
+        attend=False
+    else:
+        attend=True
+    print(attend)
+    return redirect('index')
+
