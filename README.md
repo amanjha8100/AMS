@@ -14,7 +14,7 @@ Python, Django, Bootstrap, CSS, HTML, Javascript, Jquery, Ajax, Docker.
 * The form has custom validators which allows it to take attendance effectively.
 * The form is only visible to the normal users when the admin allows it through its admin homepage, which he can access after logging in on the website, with his credentials.
 * The admin can download the attendance for the day in CSV form from his homepage.
-* He has a pause and start button which controls the availability of the attendance form for the normal users on the website.
+* Admin has a pause and start button which controls the availability of the attendance form for the normal users on the website.
 * The project has also been **dockerized**.
 
 ## Live at: https://amsit.pythonanywhere.com/
