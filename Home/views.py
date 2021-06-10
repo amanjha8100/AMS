@@ -9,8 +9,6 @@ import csv
 from django.contrib import messages
 # Create your views here.
 dateg = datetime.date.today() - datetime.timedelta(days=1)
-print("dekh")
-print(dateg)
 
 attend = False
 
@@ -40,9 +38,6 @@ def class_date(request):
         reg = attendanceclass(date = date , status = status)
         reg.save()
     ob = attendanceclass.objects.all()
-    #base = datetime.datetime.today()
-    #numdays=31
-    #date_list = [base - datetime.timedelta(days=x) for x in range(numdays)]
     return render(request, 'home/t_class_date.html',{
         "status":ob
     })
@@ -112,7 +107,6 @@ def export(request):
         writer.writerow(attend)
     response['Content-Disposition']='attachment; filename="attendance.csv"'
     return response
-    #writer.writerow(['name','roll','date','sub','time'])
 
 @login_required
 def attendancefilter(request):
@@ -125,8 +119,6 @@ def attendancefilter(request):
         qs=qs.filter(name__startswith=nameq)
     if rollq != '' and rollq is not None:
         qs=qs.filter(roll=rollq)
-    # if subjectq != '' and subjectq is not None:
-    #     qs=qs.filter(sub__icontains=subjectq)
     if dateq != '' and dateq is not None:
         qs=qs.filter(date=dateq)
     context = {

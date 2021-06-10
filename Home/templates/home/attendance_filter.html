@@ -8,7 +8,7 @@
 {% block content %}
 <main role="main" class="container my-4">
 
-    <h3>Filter Journals</h3>
+    <h3>Filter Attendance</h3>
     <form method="GET" action=".">
       <div class="form-row">
           <div class="form-group col-12">
@@ -36,18 +36,6 @@
     </div>
       
       <div class="form-row">
-        <!-- <div class="form-group col-md-2 col-lg-2">
-          <label for="viewCountMin">Minimum Vote Count</label>
-          <input type="number" min=0 class="form-control" id="viewCountMin" placeholder="0" name="vote_count" {% if vcq is not None %}value="{{vcq}}"{% endif %}>
-        </div>
-        <div class="form-group col-md-2 col-lg-2">
-          <label for="viewCountMax">Minimum Budget</label>
-          <input type="number" min=0 class="form-control" id="viewCountMax" placeholder="10000?" name="budget" {% if budget is not None %}value="{{budget}}"{% endif %}>
-        </div>
-        <div class="form-group col-md-2 col-lg-2">
-          <label for="publishDateMin">Release date From</label>
-          <input type="date" class="form-control" id="publishDateMin" name="release_date_from" {% if rf is not None %}value="{{rf}}"{% endif %}>
-        </div> -->
         <div class="form-group col-md-2 col-lg-2">
           <input type="date" class="form-control" id="publishDateMax" name="date" {% if dateq is not None %}value="{{dateq}}"{% endif %}>
         </div>
@@ -58,15 +46,12 @@
 </main>
 
 <table class="index my-3">
-    <!--<caption>Statement Summary</caption>-->
     <thead>
       <tr>
         <th scope="col">Name</th>
         <th scope="col">Roll no.</th>
         <th scope="col">Subject</th>
         <th scope="col">Date</th>
-        <!--<th scope="col">Amount</th>
-        <th scope="col">Period</th>-->
       </tr>
     </thead>
     <tbody>
@@ -76,8 +61,6 @@
         <td data-label="Roll no.">{{q.roll}}</td>
         <td data-label="Subject">{{q.sub}}</td>
         <td data-label="Date">{{q.date}}</td>
-        <!--<td data-label="Amount">$1,190</td>
-        <td data-label="Period">03/01/2016 - 03/31/2016</td>-->
       </tr>
       {% empty %}
       <div class="text-center">
