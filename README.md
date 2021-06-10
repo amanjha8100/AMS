@@ -15,13 +15,26 @@ Python, Django, Bootstrap, CSS, HTML, Javascript, Jquery, Ajax, Docker.
 * The form is only visible to the normal users when the admin allows it through its admin homepage, which he can access after logging in on the website, with his credentials.
 * The admin can download the attendance for the day in CSV form from his homepage.
 * He has a pause and start button which controls the availability of the attendance form for the normal users on the website.
+* The project has also been dockerized.
 
 ## Live at: https://amsit.pythonanywhere.com/
 
 ## Screenshots
 
 ## Home page
-![Index-Page](https://github.com/amanjha8100/ToDoAppDjango/blob/main/ss/Home.PNG?raw=true)
+![Home-Page](https://github.com/amanjha8100/AMS/blob/main/ss/Homepage.PNG?raw=true)
+
+## Admin Home Page
+![Admin-Home-Page](https://github.com/amanjha8100/AMS/blob/main/ss/adminhomepage.PNG?raw=true)
+
+## User Home Page
+![User-Home-Page](https://github.com/amanjha8100/AMS/blob/main/ss/userhomepage.PNG?raw=true)
+
+## Attendance Allowed State
+![Allowed-attendance-Page](https://github.com/amanjha8100/AMS/blob/main/ss/aallowedform.PNG?raw=true)
+
+## Attendance Not Allowed State
+![Not-Allowed-attendance-Page](https://github.com/amanjha8100/AMS/blob/main/ss/anotallowedform.PNG?raw=true)
 
 
 
