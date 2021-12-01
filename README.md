@@ -1,5 +1,7 @@
 # Attendance Management System(AMS)
 
+![image](https://media-exp1.licdn.com/dms/image/C4E1BAQFyEy9Q1iS2lg/company-background_10000/0/1603642229830?e=1638475200&v=beta&t=026rnup67UCxc4AEpCpazRCwHWi9cPHcQbIpu6shjX0)
+
 I created a attendance management system using **django framework**, **ajax**,  **jquery**, **javascript**, **bootstrap**, **css** and **HTML**.
 The goal of the project is to create a web app where students can login using their provided credentials and mark their attendance for the class. It uses forms and validators to stop marking attendance for the day other than today. It also enables the admin to download the attendance of the given date in CSV format.
 **The attendance form is only available for users, when the admin allows it.**
