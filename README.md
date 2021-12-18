@@ -9,6 +9,50 @@ The goal of the project is to create a web app where students can login using th
 ## Tech Used
 Python, Django, Bootstrap, CSS, HTML, Javascript, Jquery, Ajax, Docker.
 
+## Installation
+InOrder to contribute to this repository follow the given procedure - 
+
+1. Fork the repository
+2. Clone it to your local system using the command 
+```git clone <HTTP address>```
+
+After cloning it successfully its time to set up the virtual environment for Django
+
+Use the following commands 
+```pip install virtualenv```
+
+then 
+```python -m venv [name of venv]```
+
+ To activate the virtual environment use 
+```env_name\scripts\activate```
+
+Now to install Django use 
+```pip install django```
+
+So Far we have installed Django and activated the virtual environment now let us have a look at installing certain dependencies for the project and setting up the project locally.
+
+Just Follow the Below Procedure - 
+```pip install -r requirements.txt```
+
+then run 
+```python manage.py migrate```
+
+Create admin account
+```python manage.py createsuperuser```
+
+then
+```python manage.py makemigrations App_name```
+
+then again run
+```python manage.py migrate```
+
+Finally to start the development server use
+```python manage.py runserver```
+
+If you face any problem while installing django click [here](https://docs.djangoproject.com/en/4.0/intro/install/)
+
+
 ## Key Features
 * The homepage contains the data of every student of the department.
 * The subjects section contains, the subject currently active.
@@ -40,9 +84,3 @@ Python, Django, Bootstrap, CSS, HTML, Javascript, Jquery, Ajax, Docker.
 
 ## Attendance Filter Section
 ![Attendance-Filter](https://github.com/amanjha8100/AMS/blob/main/ss/attendancefilterpage.PNG?raw=true)
-
-
-
-
-
-
