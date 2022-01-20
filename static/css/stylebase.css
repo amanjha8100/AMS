@@ -5,6 +5,9 @@
   font-size:15px;
   line-height:24px;
   color:#737373;
+  height: 30rem;
+  vertical-align: middle;
+
 }
 .site-footer hr
 {
@@ -17,7 +20,7 @@
 }
 .site-footer h6
 {
-  color:#fff;
+  color: #fff;;
   font-size:16px;
   text-transform:uppercase;
   margin-top:5px;

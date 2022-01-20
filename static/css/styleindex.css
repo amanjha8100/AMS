@@ -6,7 +6,8 @@ body {
 table.index {
   border: 1px solid #ccc;
   border-collapse: collapse;
-  margin: 0;
+  margin-left: 3 rem;
+  font-size: x-large;
   padding: 0;
   width: 100%;
   table-layout: fixed;
@@ -34,7 +35,6 @@ table.index th {
   letter-spacing: .1em;
   text-transform: uppercase;
 }
-
 @media screen and (max-width: 600px) {
   table.index {
     border: 0;
