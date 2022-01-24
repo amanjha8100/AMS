@@ -40,7 +40,23 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'crispy_forms',
     'Home',
+    'rest_framework',
+    'rest_framework.authtoken',
+    'api',
+    'rest_auth'
 ]
+AUTH_USER_MODEL ='Home.User'
+REST_FRAMEWORK = {
+   'DEFAULT_PERMISSION_CLASSES': (
+       'rest_framework.permissions.IsAuthenticated',
+   ),
+   'DEFAULT_AUTHENTICATION_CLASSES': (
+       'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+       'rest_framework.authentication.SessionAuthentication',
+       'rest_framework.authentication.BasicAuthentication',
+   ),
+}
+
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
