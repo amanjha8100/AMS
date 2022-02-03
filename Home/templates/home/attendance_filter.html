@@ -6,10 +6,10 @@
  <link rel="stylesheet" href="{% static 'css/styleindex.css'%}">
 {% endblock %}
 {% block content %}
-<main role="main" class="container my-4">
 
+<main role="main" class="container d-flex align-items-center flex-column justify-content-center my-4">
     <h3>Filter Attendance</h3>
-    <form method="GET" action=".">
+    <form method="GET" class="col-8" action=".">
       <div class="form-row">
           <div class="form-group col-12">
               <div class="input-group">
@@ -36,7 +36,7 @@
     </div>
       
       <div class="form-row">
-        <div class="form-group col-md-2 col-lg-2">
+        <div class="form-group col-md-2 col-lg-3">
           <input type="date" class="form-control" id="publishDateMax" name="date" {% if dateq is not None %}value="{{dateq}}"{% endif %}>
         </div>
         
