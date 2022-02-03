@@ -40,9 +40,9 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'crispy_forms',
     'Home',
+    'api',
     'rest_framework',
     'rest_framework.authtoken',
-    'api',
     'rest_auth'
 ]
 AUTH_USER_MODEL ='Home.User'
@@ -136,11 +136,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, 'static'),
-# ]
+STATIC_URL = 'static/'
+#STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, 'static'),
+]
 
 
 LOGIN_REDIRECT_URL = '/'
